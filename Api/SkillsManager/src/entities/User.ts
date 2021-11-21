@@ -21,7 +21,6 @@ export class User {
   userName: string;
 
   @Column({ type: 'varchar', length: 80 })
-  @IsAlpha()
   @MinLength(3)
   name: string;
 
@@ -42,8 +41,8 @@ export class User {
   @Column({ type: 'varchar', nullable: true })
   password_reset_token: string;
 
-  @Column({ type: 'boolean' })
-  admin: boolean;
+  @Column({ type: 'boolean', default: false })
+  admin: boolean = false;
 
   @OneToMany(() => SocialMedia, (socialMedia) => socialMedia.user)
   socialMedias: SocialMedia[];

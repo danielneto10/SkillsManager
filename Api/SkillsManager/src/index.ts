@@ -1,3 +1,4 @@
+import './config/dotenv';
 import * as express from 'express';
 import { initDatabase } from '../src/database/database';
 import { router } from './routes/router';
@@ -7,4 +8,4 @@ app.use(express.json());
 initDatabase();
 router(app);
 
-app.listen(3000);
+app.listen(process.env.PORT);
