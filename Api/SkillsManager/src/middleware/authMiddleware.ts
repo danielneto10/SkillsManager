@@ -25,10 +25,11 @@ export function authAdmin(req: Request, res: Response, next: NextFunction) {
   const token = tokenHeader.replace('Bearer', '').trim();
 
   try {
+    verify(token, process.env.SECRET_KEY);
     const tokenDecode = jwtDecode(token) as TokenDecode;
     if (!tokenDecode.admin) return res.sendStatus(401);
     return next();
   } catch (error) {
-    return res.sendStatus(500);
+    return res.sendStatus(401);
   }
 }

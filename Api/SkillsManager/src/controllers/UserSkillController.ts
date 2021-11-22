@@ -24,6 +24,24 @@ class UserSkillController {
     }
   }
 
+  async addUserSkills(req: Request, res: Response) {
+    const { userName } = req.params;
+    const skillsArray = req.body;
+    try {
+      const userRepository = getRepository(User);
+      const skillRepository = getRepository(Skill);
+      const user = await userRepository.findOne({
+        where: { userName: userName, admin: false },
+        relations: ['skills'],
+      });
+      user.skills = skillsArray;
+      await userRepository.save(user);
+      return res.status(200).json(skillsArray);
+    } catch (error) {
+      return res.sendStatus(500);
+    }
+  }
+
   async getUserSkill(req: Request, res: Response) {
     const { userName, skillId } = req.params;
     try {
