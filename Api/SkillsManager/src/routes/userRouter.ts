@@ -5,8 +5,9 @@ import { authAdmin, authToken } from '../middleware/authMiddleware';
 const route = Router();
 
 route
-  .get('/users', authAdmin, UserController.getAll)
+  .get('/users', UserController.getAll)
   .get('/users/:userName', UserController.getByUserName)
+  .get('/users/exists/email/:email', UserController.getByEmail)
   .put('/users/:userName', authToken, UserController.update)
   .delete('/users/:userName', authAdmin, UserController.delete);
 

@@ -24,9 +24,25 @@ class UserController {
         where: { userName: userName, admin: false },
         relations: ['socialMedias', 'skills'],
       });
-      if (!user) return res.status(404).json();
+      if (!user) return res.status(200).json();
 
       return res.status(200).json(user);
+    } catch {
+      return res.sendStatus(500);
+    }
+  }
+
+  async getByEmail(req: Request, res: Response) {
+    const { email } = req.params;
+    try {
+      const userRepository = getRepository(User);
+      const user = await userRepository.findOne({
+        where: { email: email, admin: false },
+        relations: ['socialMedias', 'skills'],
+      });
+      if (!user) res.status(200).json();
+
+      return res.status(200).json({ email: true });
     } catch {
       return res.sendStatus(500);
     }
@@ -40,7 +56,7 @@ class UserController {
       const user = await userRepository.findOne({
         where: { userName: userName, admin: false },
       });
-      if (!user) return res.status(404).json();
+      if (!user) res.status(200).json();
       if (req.body.admin) req.body.admin = false;
 
       if (userFields.email || user.userName) {
@@ -73,7 +89,7 @@ class UserController {
       const user = await userRepository.findOne({
         where: { userName: userName },
       });
-      if (!user) return res.status(404).json();
+      if (!user) res.status(200).json();
 
       await userRepository.delete({ userName: userName });
       return res.status(200).json();

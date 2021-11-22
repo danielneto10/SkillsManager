@@ -1,1 +1,53 @@
-<p>register works!</p>
+<app-template-auth>
+  <h1 class="text-light fw-bold">Cadastrar-se</h1>
+  <form [formGroup]="registerForm" (submit)="register()">
+    <div class="input-group mb-3">
+      <span class="input-group-text" id="name-input"><i class="fas fa-lock"></i></span>
+      <input formControlName="name" type="name" class="form-control" placeholder="Nome" aria-label="name"
+        aria-describedby="name-input" [ngClass]="cssValidator(f.name)">
+      <div class="invalid-feedback" *ngIf="f.name?.errors?.required && f.name?.touched">Nome é obrigatório
+      </div>
+      <div class="invalid-feedback" *ngIf="f.name?.errors?.minlength && f.name?.touched">Nome deve ter no
+        mínimo 3 caracteres
+      </div>
+      <div class="invalid-feedback" *ngIf="f.name?.errors?.pattern && f.name?.touched">Nome só pode conter letras
+      </div>
+    </div>
+    <div class="input-group mb-3">
+      <span class="input-group-text" id="userName-input"><i class="fas fa-lock"></i></span>
+      <input formControlName="userName" type="userName" class="form-control" placeholder="Username"
+        aria-label="userName" aria-describedby="userName-input" [ngClass]="cssValidator(f.userName)">
+      <div class="invalid-feedback" *ngIf="f.userName?.errors?.required && f.userName?.touched">UserName é obrigatório
+      </div>
+      <div class="invalid-feedback" *ngIf="f.userName?.errors?.minlength && f.userName?.touched">UserName deve ter no
+        mínimo 3 caracteres
+      </div>
+      <div class="invalid-feedback" *ngIf="f.userName?.errors?.userExist && f.userName?.touched">UserName já existe
+      </div>
+    </div>
+    <div class="input-group mb-3">
+      <span class="input-group-text" id="email-input"><i class="fas fa-envelope"></i></span>
+      <input formControlName="email" type="text" class="form-control" placeholder="Email" aria-label="Email"
+        aria-describedby="email-input" [ngClass]="cssValidator(f.email)">
+      <div class="invalid-feedback" *ngIf="f.email?.errors?.required && f.email?.touched">Email é obrigatório</div>
+      <div class="invalid-feedback" *ngIf="f.email?.errors?.email && f.email?.touched">Digite um email válido</div>
+      <div class="invalid-feedback" *ngIf="f.email?.errors?.emailExist && f.email ?.touched">Email já existe
+      </div>
+    </div>
+    <div class="input-group mb-3">
+      <span class="input-group-text" id="password-input"><i class="fas fa-lock"></i></span>
+      <input formControlName="password" type="password" class="form-control" placeholder="Senha" aria-label="password"
+        aria-describedby="password-input" [ngClass]="cssValidator(f.password)">
+      <div class="invalid-feedback" *ngIf="f.password?.errors?.required && f.password?.touched">Senha é obrigatória
+      </div>
+      <div class="invalid-feedback" *ngIf="f.password?.errors?.minlength && f.password?.touched">Senha deve ter no
+        mínimo 4 caracteres
+      </div>
+    </div>
+    <div class="d-grid">
+      <button [disabled]="!registerForm.valid" class="btn btn-primary fw-bold fs-4">Cadastrar</button>
+    </div>
+    <small class="text-light mt-2">Possui uma conta? <a [routerLink]="['/login']" class="fw-bold">Faça o
+        login</a></small>
+  </form>
+</app-template-auth>

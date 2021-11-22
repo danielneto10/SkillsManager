@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
+import { ToastrService } from 'ngx-toastr';
 import { AutenticacaoService } from 'src/app/core/autenticacao/autenticacao.service';
 import { cssValidator } from 'src/app/utils/cssValidator';
 import { LoginUser } from './login-user';
@@ -21,7 +22,8 @@ export class LoginComponent implements OnInit {
   constructor(
     private fb: FormBuilder,
     private autenticacaoService: AutenticacaoService,
-    private router: Router
+    private router: Router,
+    private toastr: ToastrService
   ) {}
 
   ngOnInit(): void {
@@ -34,8 +36,9 @@ export class LoginComponent implements OnInit {
   login() {
     const user = this.loginForm.getRawValue() as LoginUser;
     this.autenticacaoService.login(user).subscribe(
-      () => console.log('Logou'),
-      (err) => console.log(err)
+      () => this.toastr.success('Login efetuado com sucesso', 'Entrou'),
+      (err) =>
+        this.toastr.error('O email/senha estão incorretos', 'Dados inválidos')
     );
   }
 }

@@ -47,10 +47,8 @@ class AuthController {
       const user = await userRepository.findOne({ where: { email: email } });
       if (!user) return res.status(401).json();
 
-      if (!user.admin) {
-        const isValidPassword = await bcryptjs.compare(password, user.password);
-        if (!isValidPassword) return res.status(401).json();
-      }
+      const isValidPassword = await bcryptjs.compare(password, user.password);
+      if (!isValidPassword) return res.status(401).json();
 
       const token = jwt.sign(
         { userName: user.userName, name: user.name, admin: user.admin },
