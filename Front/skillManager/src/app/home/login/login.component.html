@@ -1,0 +1,22 @@
+<app-template-auth>
+  <h1 class="text-light fw-bold">Login</h1>
+  <form [formGroup]="loginForm">
+    <div class="input-group mb-3">
+      <span class="input-group-text" id="email-input"><i class="fas fa-envelope"></i></span>
+      <input formControlName="email" type="text" class="form-control" placeholder="Email" aria-label="Email"
+        aria-describedby="email-input" [ngClass]="cssValidator(f.email)">
+      <div class="invalid-feedback" *ngIf="f.email?.errors?.required && f.email?.touched">Email é obrigatório</div>
+      <div class="invalid-feedback" *ngIf="f.email?.errors?.email && f.email?.touched">Digite um email válido</div>
+    </div>
+    <div class="input-group mb-3">
+      <span class="input-group-text" id="password-input"><i class="fas fa-lock"></i></span>
+      <input formControlName="password" type="text" class="form-control" placeholder="Senha" aria-label="password"
+        aria-describedby="password-input" [ngClass]="cssValidator(f.password)">
+      <div class="invalid-feedback" *ngIf="f.password?.errors?.required && f.password?.touched">Senha é obrigatória
+      </div>
+    </div>
+    <div class="d-grid">
+      <button [disabled]="!loginForm.valid" class="btn btn-primary fw-bold fs-4">Logar</button>
+    </div>
+  </form>
+</app-template-auth>
