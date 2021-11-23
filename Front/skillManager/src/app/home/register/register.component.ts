@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
+import { Router } from '@angular/router';
 import { ToastrService } from 'ngx-toastr';
 import { cssValidator } from 'src/app/utils/cssValidator';
 import { NewUserService } from './new-user.service';
@@ -23,7 +24,8 @@ export class RegisterComponent implements OnInit {
     private fb: FormBuilder,
     private validatorNewUserService: ValidatorNewUserService,
     private newUserService: NewUserService,
-    private toastr: ToastrService
+    private toastr: ToastrService,
+    private router: Router
   ) {}
 
   ngOnInit(): void {
@@ -33,12 +35,16 @@ export class RegisterComponent implements OnInit {
         [
           Validators.required,
           Validators.minLength(3),
-          Validators.pattern(/^[a-zA-z\s]*$/),
+          Validators.pattern('[a-zA-z ]*'),
         ],
       ],
       userName: [
         '',
-        [Validators.required, Validators.minLength(3)],
+        [
+          Validators.required,
+          Validators.minLength(3),
+          Validators.pattern('[a-zA-Z0-9]*'),
+        ],
         [this.validatorNewUserService.userExists()],
       ],
       email: [
@@ -52,8 +58,12 @@ export class RegisterComponent implements OnInit {
 
   register() {
     const newUser = this.registerForm.getRawValue() as RegisterUser;
+    newUser.userName = newUser.userName.toLowerCase();
     this.newUserService.register(newUser).subscribe(
-      () => this.toastr.success('Usuário criado com sucesso', 'Usuário criado'),
+      () => {
+        this.toastr.success('Usuário criado com sucesso', 'Usuário criado');
+        this.router.navigate(['/login']);
+      },
       (err) =>
         this.toastr.error(
           'Houve algum problema durante a criação do usuário',

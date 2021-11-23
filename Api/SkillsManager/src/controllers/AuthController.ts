@@ -26,7 +26,7 @@ class AuthController {
         email: email,
         password: password,
       });
-
+      user.userName = user.userName.toLowerCase();
       const errors = await validate(user, {
         validationError: { target: false },
       });

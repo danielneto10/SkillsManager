@@ -24,6 +24,9 @@
       </div>
       <div class="invalid-feedback" *ngIf="f.userName?.errors?.userExist && f.userName?.touched">UserName já existe
       </div>
+      <div class="invalid-feedback" *ngIf="f.userName?.errors?.pattern && f.userName?.touched">Username só pode conter
+        letras e números
+      </div>
     </div>
     <div class="input-group mb-3">
       <span class="input-group-text" id="email-input"><i class="fas fa-envelope"></i></span>
