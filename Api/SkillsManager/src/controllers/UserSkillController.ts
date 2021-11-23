@@ -29,7 +29,6 @@ class UserSkillController {
     const skillsArray = req.body;
     try {
       const userRepository = getRepository(User);
-      const skillRepository = getRepository(Skill);
       const user = await userRepository.findOne({
         where: { userName: userName, admin: false },
         relations: ['skills'],

@@ -10,6 +10,7 @@ class UserController {
         where: { admin: false },
         relations: ['socialMedias', 'skills'],
       });
+
       return res.status(200).json(users);
     } catch {
       return res.sendStatus(500);
