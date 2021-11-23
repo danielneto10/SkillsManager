@@ -9,7 +9,6 @@ import { HomeHeaderComponent } from './home-header/home-header.component';
 import { HomeBodyComponent } from './home-body/home-body.component';
 import { TemplateAuthModule } from '../components/template-auth/template-auth.module';
 import { SharedModule } from '../shared/shared.module';
-import { ReactiveFormsModule } from '@angular/forms';
 
 @NgModule({
   declarations: [

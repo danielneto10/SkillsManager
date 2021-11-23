@@ -1,0 +1,18 @@
+<app-template-new-password>
+  <h1 class="text-light fw-bold">Esqueci minha senha</h1>
+  <p class="text-light">Após digitar seu email, um token será enviado para ele.</p>
+  <form [formGroup]="sendTokenForm" (submit)="sendToken()">
+    <div class="input-group mb-3">
+      <span class="input-group-text" id="email-input"><i class="fas fa-envelope"></i></span>
+      <input formControlName="email" type="text" class="form-control" placeholder="Email" aria-label="Email"
+        aria-describedby="email-input" [ngClass]="cssValidator(f.email)">
+      <div class="invalid-feedback" *ngIf="f.email?.errors?.required && f.email?.touched">Email é obrigatório</div>
+      <div class="invalid-feedback" *ngIf="f.email?.errors?.email && f.email?.touched">Digite um email válido</div>
+    </div>
+    <div class="d-grid">
+      <button [disabled]="!sendTokenForm.valid" class="btn btn-primary fw-bold fs-4">Enviar</button>
+    </div>
+  </form>
+  <small class="text-light mt-2">Já tem um token? <a [routerLink]="['new-password']" class="fw-bold">Resetar senha</a>
+  </small>
+</app-template-new-password>

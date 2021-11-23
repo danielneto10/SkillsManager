@@ -2,7 +2,7 @@
   <h1 class="text-light fw-bold">Cadastrar-se</h1>
   <form [formGroup]="registerForm" (submit)="register()">
     <div class="input-group mb-3">
-      <span class="input-group-text" id="name-input"><i class="fas fa-lock"></i></span>
+      <span class="input-group-text" id="name-input"><i class="fas fa-user"></i></span>
       <input formControlName="name" type="name" class="form-control" placeholder="Nome" aria-label="name"
         aria-describedby="name-input" [ngClass]="cssValidator(f.name)">
       <div class="invalid-feedback" *ngIf="f.name?.errors?.required && f.name?.touched">Nome é obrigatório
@@ -14,7 +14,7 @@
       </div>
     </div>
     <div class="input-group mb-3">
-      <span class="input-group-text" id="userName-input"><i class="fas fa-lock"></i></span>
+      <span class="input-group-text" id="userName-input"><i class="far fa-user"></i></span>
       <input formControlName="userName" type="userName" class="form-control" placeholder="Username"
         aria-label="userName" aria-describedby="userName-input" [ngClass]="cssValidator(f.userName)">
       <div class="invalid-feedback" *ngIf="f.userName?.errors?.required && f.userName?.touched">UserName é obrigatório

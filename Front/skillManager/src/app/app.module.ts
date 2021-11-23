@@ -17,7 +17,7 @@ import { ToastrModule } from 'ngx-toastr';
     HttpClientModule,
     ToastrModule.forRoot({
       positionClass: 'toast-bottom-right',
-      timeOut: 3500,
+      timeOut: 5000,
       maxOpened: 2,
       autoDismiss: true,
     }),
