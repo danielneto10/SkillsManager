@@ -1,0 +1,30 @@
+<div class="d-flex flex-column mx-5">
+  <section>
+    <div>
+      <h1>Sobre</h1>
+    </div>
+    <div *ngIf="user.about; else noAbout">
+      <p>{{user.about}}</p>
+    </div>
+  </section>
+  <section>
+    <div>
+      <h1>Contatos</h1>
+    </div>
+    <div *ngIf="user.about; else noSocialMedias">
+      <p>{{user.socialMedias}}</p>
+    </div>
+  </section>
+</div>
+
+
+<ng-template #noAbout>
+  <div class="fst-italic">
+    <p class="text-muted fs-3">{{user.name}} ainda não escreveu sobre ele</p>
+  </div>
+</ng-template>
+<ng-template #noSocialMedias>
+  <div class="fst-italic">
+    <p class="text-muted fs-3">{{user.name}} ainda não adicionou suas de contato</p>
+  </div>
+</ng-template>

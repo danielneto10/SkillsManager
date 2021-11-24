@@ -1,0 +1,38 @@
+<div class="d-flex flex-column h-100">
+  <ul class="nav flex-column mb-auto">
+    <li class="px-2 py-1">
+      <a [routerLink]="['.']" class="btn btn-outline-light border-0 w-100 text-start">
+        <i class="fas fa-address-book pe-1"></i>
+        Sobre
+      </a>
+    </li>
+    <li class="px-2 py-1">
+      <a [routerLink]="['skills']" class="btn btn-outline-light border-0 w-100 text-start">
+        <i class="fas fa-hat-wizard pe-1"></i>
+        Skills
+      </a>
+    </li>
+    <div *ngIf="(user$ | async) as user">
+      <div *ngIf="user.userName === userNameParams">
+        <li class="px-2 py-1">
+          <a [routerLink]="['edit-skills']" class="btn btn-outline-light border-0 w-100 text-start">
+            <i class="fas fa-plus pe-1"></i>
+            Adicionar/Remover Skills
+          </a>
+        </li>
+        <li class="px-2 py-1">
+          <a [routerLink]="['edit-profile']" class="btn btn-outline-light border-0 w-100 text-start">
+            <i class="fas fa-edit pe-1"></i>
+            Editar Perfil
+          </a>
+        </li>
+      </div>
+    </div>
+  </ul>
+  <hr>
+  <a [routerLink]="['']"
+    class="fs-2 d-flex align-items-center justify-content-center pb-2 text-decoration-none text-light d-sm-none d-md-flex">
+    <i class="fas fa-archive me-2"></i>
+    DevsRepos
+  </a>
+</div>

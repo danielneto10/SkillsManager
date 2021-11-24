@@ -18,9 +18,9 @@
           <a class="nav-link" [routerLink]="['users']">Desenvolvedores</a>
         </li>
       </ul>
-      <div class="ms-auto" *ngIf="(user$ | async) as user; else deslogado">
-        <a href="#">{{user.name}}</a>
-        <a [routerLink]="['']" class="ms-3" (click)="logOut()">LogOut</a>
+      <div class="ms-auto fw-bolder" *ngIf="(user$ | async) as user; else deslogado">
+        <a class="text-decoration-none" href="#">{{user.name}}</a>
+        <a [routerLink]="['']" class="ms-3 text-decoration-none" (click)="logOut()">(LogOut)</a>
       </div>
       <ng-template #deslogado>
         <ul class="navbar-nav">
