@@ -1,0 +1,18 @@
+<!-- <div class="container mt-4">
+  <form>
+    <div class="input-group">
+      <span class="input-group-text"><i class="fa fa-search"></i></span>
+      <input #filter class="form-control" type="text" placeholder="Pesquisar por skill" name="filter" [value]="value"
+        (keyup)="debouce.next(filter.value)">
+    </div>
+  </form>
+</div> -->
+<div class="container mt-4">
+  <form>
+    <div class="input-group">
+      <span class="input-group-text"><i class="fa fa-search"></i></span>
+      <input #filter class="form-control" type="text" placeholder="Pesquisar por skill" name="filter"
+        [(ngModel)]="filterValue">
+    </div>
+  </form>
+</div>

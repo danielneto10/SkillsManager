@@ -1,1 +1,2 @@
-<p>lista-users works!</p>
+<app-search-skill [value]="filter" (sendFilter)="filter = $event"></app-search-skill>
+<app-grid-users [users]="users | filterSkill: filter"></app-grid-users>

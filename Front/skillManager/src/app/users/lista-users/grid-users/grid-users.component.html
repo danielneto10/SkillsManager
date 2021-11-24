@@ -1,0 +1,9 @@
+<div class="container d-flex flex-column">
+  <div class="row g-0">
+    <div class="col-md-4 p-3" *ngFor="let user of users">
+      <app-user-card [user]=user></app-user-card>
+    </div>
+  </div>
+  <div class="d-flex flex-column align-items-center mt-auto fixed-bottom">
+  </div>
+</div>
