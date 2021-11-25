@@ -19,7 +19,12 @@ export class AuthUserService {
   private decodeToken() {
     const token = this.tokenService.retornaToken();
     const user = jwtDecode(token) as AuthUser;
-    this.userSubject.next(user);
+    if (Date.now() >= user.exp! * 1000) {
+      this.userSubject.next(null!);
+      this.tokenService.excluiToken();
+    } else {
+      this.userSubject.next(user);
+    }
   }
 
   getAuthUser() {

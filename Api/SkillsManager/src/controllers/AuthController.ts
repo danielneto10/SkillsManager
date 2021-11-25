@@ -53,7 +53,7 @@ class AuthController {
       const token = jwt.sign(
         { userName: user.userName, name: user.name, admin: user.admin },
         process.env.SECRET_KEY,
-        { expiresIn: '30m' }
+        { expiresIn: '1d' }
       );
       return res.status(200).json({ token: token });
     } catch {

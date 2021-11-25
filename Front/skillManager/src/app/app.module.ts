@@ -8,6 +8,7 @@ import { NavbarModule } from './components/navbar/navbar.module';
 import { ToastrModule } from 'ngx-toastr';
 import { NgxSpinnerModule } from 'ngx-spinner';
 import { NotFoundComponent } from './errors/not-found/not-found.component';
+import { CoreModule } from './core/core.module';
 
 @NgModule({
   declarations: [AppComponent, NotFoundComponent],
@@ -17,6 +18,7 @@ import { NotFoundComponent } from './errors/not-found/not-found.component';
     BrowserAnimationsModule,
     NavbarModule,
     HttpClientModule,
+    CoreModule,
     ToastrModule.forRoot({
       positionClass: 'toast-bottom-right',
       timeOut: 5000,

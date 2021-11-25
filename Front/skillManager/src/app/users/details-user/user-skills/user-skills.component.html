@@ -2,8 +2,9 @@
   <section>
     <div>
       <h1>Skills</h1>
+      <hr>
     </div>
-    <div *ngIf="user.skills">
+    <div *ngIf="user.skills.length; else noSkill">
       <div class="row gx-5">
         <div class="col-6" *ngFor="let skill of user.skills">
           <p class="rounded fs-3 p-2 bg-primary">{{skill.name}}</p>

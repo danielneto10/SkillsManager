@@ -16,6 +16,7 @@ import { UserAboutComponent } from './details-user/user-about/user-about.compone
 import { UserSkillsComponent } from './details-user/user-skills/user-skills.component';
 import { UserEditSkillsComponent } from './details-user/user-edit-skills/user-edit-skills.component';
 import { UserEditProfileComponent } from './details-user/user-edit-profile/user-edit-profile.component';
+import { SortableModule } from 'ngx-bootstrap/sortable';
 
 @NgModule({
   declarations: [
@@ -37,6 +38,7 @@ import { UserEditProfileComponent } from './details-user/user-edit-profile/user-
     SharedModule,
     FormsModule,
     PaginationModule.forRoot(),
+    SortableModule.forRoot(),
   ],
 })
 export class UsersModule {}

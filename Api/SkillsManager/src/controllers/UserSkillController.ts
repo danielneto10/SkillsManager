@@ -28,6 +28,7 @@ class UserSkillController {
     const { userName } = req.params;
     const skillsArray = req.body;
     try {
+      console.log(skillsArray);
       const userRepository = getRepository(User);
       const user = await userRepository.findOne({
         where: { userName: userName, admin: false },

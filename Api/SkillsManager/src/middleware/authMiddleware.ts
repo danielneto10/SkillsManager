@@ -5,7 +5,6 @@ import { TokenDecode } from '../models/tokenDecode';
 
 export function authToken(req: Request, res: Response, next: NextFunction) {
   const tokenHeader = req.headers.authorization;
-
   if (!tokenHeader) return res.sendStatus(401);
 
   const token = tokenHeader.replace('Bearer', '').trim();
