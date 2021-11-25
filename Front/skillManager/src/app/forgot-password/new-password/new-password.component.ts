@@ -48,7 +48,7 @@ export class NewPasswordComponent implements OnInit {
       .subscribe(
         () => {
           this.toastr.success('Senha alterada com sucesso', 'Senha alterada');
-          this.router.navigate(['/login']);
+          this.router.navigate(['/home', 'login']);
         },
         () => {
           this.toastr.error('Token inválido', 'Error');

@@ -3,6 +3,7 @@ import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
 import { ToastrService } from 'ngx-toastr';
 import { finalize } from 'rxjs/operators';
+import { AuthUserService } from 'src/app/core/autenticacao/user/auth-user.service';
 import { cssValidator } from 'src/app/utils/cssValidator';
 import { ForgotPasswordService } from '../forgot-password.service';
 
@@ -22,7 +23,8 @@ export class SendTokenComponent implements OnInit {
     private fb: FormBuilder,
     private forgotPasswordService: ForgotPasswordService,
     private router: Router,
-    private toastr: ToastrService
+    private toastr: ToastrService,
+    private authUserService: AuthUserService
   ) {}
 
   ngOnInit(): void {
@@ -46,7 +48,8 @@ export class SendTokenComponent implements OnInit {
             `O token foi enviado ao email ${email}`,
             'Token enviado'
           );
-          this.router.navigate(['new-password']);
+          this.authUserService.logOut();
+          this.router.navigate(['/sendToken', 'new-password']);
         },
         () =>
           this.toastr.error('Ocorreu um erro durante o envio do token', 'Error')

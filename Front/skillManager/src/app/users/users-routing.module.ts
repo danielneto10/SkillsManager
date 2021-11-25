@@ -1,7 +1,9 @@
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
+import { IsOwnerGuard } from '../core/guards/is-owner.guard';
 import { DetailsUserComponent } from './details-user/details-user.component';
 import { DetailsUserResolver } from './details-user/details-user.resolver';
+import { EditComponent } from './details-user/edit/edit.component';
 import { UserAboutComponent } from './details-user/user-about/user-about.component';
 import { UserEditProfileComponent } from './details-user/user-edit-profile/user-edit-profile.component';
 import { UserEditSkillsComponent } from './details-user/user-edit-skills/user-edit-skills.component';
@@ -33,12 +35,20 @@ const routes: Routes = [
         component: UserSkillsComponent,
       },
       {
-        path: 'edit-skills',
-        component: UserEditSkillsComponent,
-      },
-      {
-        path: 'edit-profile',
-        component: UserEditProfileComponent,
+        path: 'edit',
+        redirectTo: '',
+        component: EditComponent,
+        canActivateChild: [IsOwnerGuard],
+        children: [
+          {
+            path: 'edit-skills',
+            component: UserEditSkillsComponent,
+          },
+          {
+            path: 'edit-profile',
+            component: UserEditProfileComponent,
+          },
+        ],
       },
     ],
   },

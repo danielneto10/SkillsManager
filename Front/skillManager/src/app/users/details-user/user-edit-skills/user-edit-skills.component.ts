@@ -24,7 +24,7 @@ export class UserEditSkillsComponent implements OnInit {
   ) {}
 
   ngOnInit(): void {
-    this.activatedRoute.parent?.data.subscribe((data: Data) => {
+    this.activatedRoute.parent?.parent?.data.subscribe((data: Data) => {
       this.user = data['user'];
     });
     this.skillsService.getAllSkills().subscribe((skills) => {

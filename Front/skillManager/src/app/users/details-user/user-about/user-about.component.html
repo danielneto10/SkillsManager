@@ -6,15 +6,17 @@
     </div>
     <p>Email: {{user.email}}</p>
     <div *ngIf="user.about; else noAbout">
-      <p>{{user.about}}</p>
+      <p class="fs-5">{{user.about}}</p>
     </div>
   </section>
   <section>
     <div>
       <h1>Mídias Sociais</h1>
     </div>
-    <div *ngIf="user.about; else noSocialMedias">
-      <p>{{user.socialMedias}}</p>
+    <div *ngIf="user.socialMedias.length; else noSocialMedias">
+      <div *ngFor="let sm of user.socialMedias">
+        <p>{{sm.info}}</p>
+      </div>
     </div>
   </section>
 </div>

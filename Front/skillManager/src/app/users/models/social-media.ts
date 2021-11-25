@@ -1,5 +1,5 @@
 export interface SocialMedia {
-  id: number;
+  id?: number;
   info: string;
 }
 

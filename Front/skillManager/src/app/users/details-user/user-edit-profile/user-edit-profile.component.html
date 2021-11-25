@@ -1,10 +1,40 @@
-<div class="mx-5 h-100">
+<div class="mx-5">
   <div>
     <h1>Sobre</h1>
     <hr>
   </div>
-  <form>
+  <form [formGroup]="aboutForm">
     <label for="sobreInput" class="form-label">Sobre você</label>
-    <textarea class="form-control" placeholder="Fale sobre você" id="sobreInput" rows="7" maxlength="600"></textarea>
+    <textarea formControlName="about" class="form-control mb-3" placeholder="Fale sobre você" id="sobreInput" rows="5"
+      maxlength="600"></textarea>
   </form>
+  <div>
+    <h1>Mídias Sociais</h1>
+  </div>
+  <form [formGroup]="socialMediaForm">
+    <div class="input-group mb-3">
+      <input formControlName="link" type="text" class="form-control w-25" placeholder="Link">
+      <button class="btn btn-primary" (click)="addLink(socialMediaForm.controls.link?.value)">Adicionar</button>
+    </div>
+  </form>
+  <div class="overflow-auto tabela">
+    <table class="table table-striped table-light">
+      <thead>
+        <tr>
+          <th scope="col">Links</th>
+          <th scope="col" class="text-center">Ação</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr *ngFor="let socialMedia of socialMedias; let i = index">
+          <td>{{socialMedia.info}}</td>
+          <td class="d-flex justify-content-center">
+            <button class="btn btn-danger" (click)="deleteLink(i)">Deletar</button>
+          </td>
+        </tr>
+    </table>
+  </div>
+  <div class="d-grid">
+    <button class="btn btn-primary my-3" (click)="salvar()">Salvar</button>
+  </div>
 </div>

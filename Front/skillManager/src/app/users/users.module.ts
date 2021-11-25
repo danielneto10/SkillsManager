@@ -17,6 +17,7 @@ import { UserSkillsComponent } from './details-user/user-skills/user-skills.comp
 import { UserEditSkillsComponent } from './details-user/user-edit-skills/user-edit-skills.component';
 import { UserEditProfileComponent } from './details-user/user-edit-profile/user-edit-profile.component';
 import { SortableModule } from 'ngx-bootstrap/sortable';
+import { EditComponent } from './details-user/edit/edit.component';
 
 @NgModule({
   declarations: [
@@ -31,6 +32,7 @@ import { SortableModule } from 'ngx-bootstrap/sortable';
     UserSkillsComponent,
     UserEditSkillsComponent,
     UserEditProfileComponent,
+    EditComponent,
   ],
   imports: [
     CommonModule,
