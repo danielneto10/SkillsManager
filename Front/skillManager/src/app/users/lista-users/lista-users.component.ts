@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
-import { ActivatedRoute } from '@angular/router';
+import { ActivatedRoute, Router, RouterEvent } from '@angular/router';
+import { NgxSpinnerService } from 'ngx-spinner';
 import { Users } from '../models/user';
 
 @Component({
@@ -11,7 +12,10 @@ export class ListaUsersComponent implements OnInit {
   users!: Users;
   filter = '';
 
-  constructor(private activatedRoute: ActivatedRoute) {}
+  constructor(
+    private activatedRoute: ActivatedRoute,
+    private spinner: NgxSpinnerService
+  ) {}
 
   ngOnInit(): void {
     this.activatedRoute.params.subscribe(() => {

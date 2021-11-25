@@ -3,13 +3,14 @@
     <div>
       <h1>Sobre</h1>
     </div>
+    <p>Email: {{user.email}}</p>
     <div *ngIf="user.about; else noAbout">
       <p>{{user.about}}</p>
     </div>
   </section>
   <section>
     <div>
-      <h1>Contatos</h1>
+      <h1>Mídias Sociais</h1>
     </div>
     <div *ngIf="user.about; else noSocialMedias">
       <p>{{user.socialMedias}}</p>
@@ -25,6 +26,6 @@
 </ng-template>
 <ng-template #noSocialMedias>
   <div class="fst-italic">
-    <p class="text-muted fs-3">{{user.name}} ainda não adicionou suas de contato</p>
+    <p class="text-muted fs-3">{{user.name}} ainda não adicionou suas mídias sociais</p>
   </div>
 </ng-template>

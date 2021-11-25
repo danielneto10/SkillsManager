@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { ActivatedRoute } from '@angular/router';
+import { ActivatedRoute, Data } from '@angular/router';
 import { User } from '../models/user';
 
 @Component({
@@ -14,8 +14,8 @@ export class DetailsUserComponent implements OnInit {
   constructor(private activatedRoute: ActivatedRoute) {}
 
   ngOnInit(): void {
-    this.activatedRoute.params.subscribe(
-      () => (this.user = this.activatedRoute.snapshot.data['user'])
+    this.activatedRoute.data.subscribe(
+      (data: Data) => (this.user = data['user'])
     );
   }
 }

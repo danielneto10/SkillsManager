@@ -44,6 +44,7 @@ export class LoginComponent implements OnInit {
       .subscribe(
         () => {
           this.toastr.success('Login efetuado com sucesso', 'Entrou');
+          this.router.navigate(['/users']);
         },
         (err) => {
           this.toastr.error(

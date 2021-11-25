@@ -1,25 +1,21 @@
-import { Injectable } from '@angular/core';
-import { CanLoad, Route, Router, UrlSegment, UrlTree } from '@angular/router';
 import { Observable } from 'rxjs';
 import { AuthUserService } from '../autenticacao/user/auth-user.service';
+import { Injectable } from '@angular/core';
+import {
+  ActivatedRouteSnapshot,
+  CanActivate,
+  Router,
+  RouterStateSnapshot,
+} from '@angular/router';
 
-@Injectable({
-  providedIn: 'root',
-})
-export class LoggedGuard implements CanLoad {
+@Injectable({ providedIn: 'root' })
+export class LoggedGuard implements CanActivate {
   constructor(
-    private authUserService: AuthUserService,
-    private router: Router
+    private router: Router,
+    private authUserService: AuthUserService
   ) {}
 
-  canLoad(
-    route: Route,
-    segments: UrlSegment[]
-  ):
-    | Observable<boolean | UrlTree>
-    | Promise<boolean | UrlTree>
-    | boolean
-    | UrlTree {
+  canActivate(route: ActivatedRouteSnapshot, state: RouterStateSnapshot) {
     if (this.authUserService.isLogged()) {
       this.router.navigate(['/users']);
       return false;
