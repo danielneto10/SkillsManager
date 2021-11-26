@@ -24,6 +24,12 @@ export default {
 ```
 **Observação:** Não esquece de criar o banco em seu banco de dados com o mesmo nome colocado em 'database'
 
+1.3 Rode todas as migrations para que as tabelas sejam criada através do comando:
+
+```bash
+npm run typeorm migration:run
+```
+
 ### 2. Front
 
 2.1 Entre no projeto 'Front/skillManager' e digite o comando para instalar todas as dependências:
