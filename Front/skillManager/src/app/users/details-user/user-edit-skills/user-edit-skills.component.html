@@ -9,21 +9,21 @@
   <div class="row h-100">
     <div class="col-6">
       <h2 class="text-center">Skills</h2>
-      <bs-sortable [(ngModel)]="skills" fieldName="name" itemClass="badge bg-secondary p-2 mb-2 w-100 fs-2"
+      <bs-sortable [(ngModel)]="skills" fieldName="name" itemClass="badge p-2 mb-2 w-100 fs-2 bg-secondary"
         itemActiveClass="bg-primary" placeholderItem="Arraste Aqui" placeholderClass="text-center text-muted fs-1"
         wrapperClass="sortable-wrapper">
       </bs-sortable>
     </div>
     <div class="col-6">
       <h2 class="text-center">Minhas Skills</h2>
-      <bs-sortable [(ngModel)]="user.skills" fieldName="name" itemClass="badge bg-secondary p-2 mb-2 w-100 fs-2"
+      <bs-sortable [(ngModel)]="user.skills" fieldName="name" itemClass="badge bg-primary p-2 mb-2 w-100 fs-2"
         itemActiveClass="bg-primary" placeholderItem="Arraste Aqui" placeholderClass="text-center text-muted fs-1"
         wrapperClass="sortable-wrapper">
       </bs-sortable>
     </div>
   </div>
   <div class="d-grid mb-4">
-    <button class="btn btn-primary fw-bold" (click)="salvarSkills()">Salvar</button>
+    <button class="botao btn btn-primary fw-bold" (click)="salvarSkills()">Salvar</button>
   </div>
 </div>
 <div class="fst-italic"></div>

@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
+import { ToastrService } from 'ngx-toastr';
 import { Observable } from 'rxjs';
 import { AuthUser } from 'src/app/core/autenticacao/user/auth-user';
 import { AuthUserService } from 'src/app/core/autenticacao/user/auth-user.service';
@@ -16,12 +17,22 @@ export class NavbarComponent implements OnInit {
 
   constructor(
     private authUserService: AuthUserService,
-    private router: Router
+    private router: Router,
+    private toastr: ToastrService
   ) {}
 
   ngOnInit(): void {}
 
+  userPage(user: AuthUser) {
+    if (user.admin) {
+      this.router.navigate(['/admin']);
+    } else {
+      this.router.navigate(['/users', user.userName]);
+    }
+  }
+
   logOut() {
+    this.toastr.success('LogOut feito com sucesso', 'Saiu');
     this.router.navigate(['']);
     this.authUserService.logOut();
   }

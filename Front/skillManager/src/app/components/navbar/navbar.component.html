@@ -17,9 +17,14 @@
         <li class="nav-item">
           <a class="nav-link" [routerLink]="['users']">Desenvolvedores</a>
         </li>
+        <div *ngIf="(user$ | async) as user">
+          <li *ngIf="user.admin" class="nav-item">
+            <a class="nav-link" [routerLink]="['admin']">Admin</a>
+          </li>
+        </div>
       </ul>
       <div class="ms-auto fw-bolder" *ngIf="(user$ | async) as user; else deslogado">
-        <a class="text-decoration-none" [routerLink]="['/users', user.userName]">{{user.name}}</a>
+        <a class="text-decoration-none" routerLink (click)="userPage(user)">{{user.name}}</a>
         <a [routerLink]="['']" class="ms-3 text-decoration-none" (click)="logOut()">(LogOut)</a>
       </div>
       <ng-template #deslogado>

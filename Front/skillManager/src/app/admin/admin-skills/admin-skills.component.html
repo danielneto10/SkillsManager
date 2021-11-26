@@ -1,0 +1,68 @@
+<div class="container d-flex align-items-center justify-content-center">
+  <div class="w-100">
+    <table *ngIf="skills.length" class="table table-striped w-100">
+      <thead>
+        <tr>
+          <th scope="col">#</th>
+          <th scope="col">Name</th>
+          <th scope="col">Description</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr *ngFor="let skill of skills">
+          <th scope="row">{{skill.id}}</th>
+          <td>{{skill.name}}</td>
+          <td>{{skill.descr}}</td>
+          <td class="d-flex justify-content-center">
+            <button class="btn btn-danger" (click)="openModal(deleteSkillModal, skill.id)"><i
+                class="fas fa-trash"></i></button>
+          </td>
+        </tr>
+      </tbody>
+      <tfoot>
+        <th></th>
+        <td></td>
+        <td></td>
+      </tfoot>
+    </table>
+    <div class="d-flex justify-content-center">
+      <button class="btn btn-danger bg-success border-success w-75" (click)="openModal(createSkillForm)"><i
+          class="fas fa-plus"></i></button>
+    </div>
+  </div>
+</div>
+
+<ng-template #createSkillForm>
+  <div class="modal-header">
+    <h4 class="modal-title pull-left">Adicionar Skill</h4>
+    <button type="button" class="btn-close close pull-right" aria-label="Fechar" (click)="modalRef?.hide()">
+    </button>
+  </div>
+  <div class="modal-body">
+    <form [formGroup]="skillForm">
+      <div class="mb-3">
+        <label for="nameInput" class="form-label">Nome</label>
+        <input formControlName="name" type="text" class="form-control" id="nameInput">
+      </div>
+      <div class="mb-3">
+        <label class="form-label">Descrição</label>
+        <select formControlName="descr" class="form-select">
+          <option value="Back-end">Back-end</option>
+          <option value="Front-end">Front-end</option>
+          <option value="Outro">Outro</option>
+        </select>
+      </div>
+      <div class="d-grid">
+        <button class="btn btn-primary" (click)="addSkill()">Adicionar</button>
+      </div>
+    </form>
+  </div>
+</ng-template>
+
+<ng-template #deleteSkillModal>
+  <div class="modal-body text-center">
+    <p>Você deseja mesmo deletar a skill?</p>
+    <button type="button" class="btn btn-success me-3 w-25" (click)="yes()">Sim</button>
+    <button type="button" class="btn btn-danger w-25" (click)="no()">Não</button>
+  </div>
+</ng-template>

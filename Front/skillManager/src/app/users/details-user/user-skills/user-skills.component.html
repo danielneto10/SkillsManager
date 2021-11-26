@@ -7,7 +7,10 @@
     <div *ngIf="user.skills.length; else noSkill">
       <div class="row gx-5">
         <div class="col-6" *ngFor="let skill of user.skills">
-          <p class="rounded fs-3 p-2 bg-primary">{{skill.name}}</p>
+          <div class="rounded mb-3 p-2 bg-primary d-flex justify-content-between">
+            <p class="fs-3 mb-0 fw-bold">{{skill.name}}</p>
+            <small class="align-self-end">{{skill.descr}}</small>
+          </div>
         </div>
       </div>
     </div>

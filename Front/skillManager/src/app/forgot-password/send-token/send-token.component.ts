@@ -52,7 +52,10 @@ export class SendTokenComponent implements OnInit {
           this.router.navigate(['/sendToken', 'new-password']);
         },
         () =>
-          this.toastr.error('Ocorreu um erro durante o envio do token', 'Error')
+          this.toastr.error(
+            'Ocorreu um erro durante o envio do token, tente novamente',
+            'Error'
+          )
       );
   }
 }

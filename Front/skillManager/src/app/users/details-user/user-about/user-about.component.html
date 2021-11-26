@@ -15,7 +15,7 @@
     </div>
     <div *ngIf="user.socialMedias.length; else noSocialMedias">
       <div *ngFor="let sm of user.socialMedias">
-        <p>{{sm.info}}</p>
+        <a [href]="sm.info">{{sm.info}}</a>
       </div>
     </div>
   </section>

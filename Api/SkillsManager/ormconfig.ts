@@ -2,9 +2,9 @@ export default {
   type: 'mysql',
   host: 'localhost',
   port: 3306,
-  username: process.env.DB_USER,
-  password: process.env.DB_PASSWORD,
-  database: 'skills_manager',
+  username: process.env.DB_USER, // Alterar aqui (Username do banco)
+  password: process.env.DB_PASSWORD, //Alterar aqui (Senha do banco)
+  database: 'skills_manager', //Alterar aqui (Nome do banco de dados)
   synchronize: false,
   logging: false,
   entities: ['src/entities/**/*.ts'],

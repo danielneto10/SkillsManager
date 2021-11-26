@@ -1,2 +1,4 @@
-<app-search-skill [value]="filter" (sendFilter)="filter = $event"></app-search-skill>
-<app-grid-users [users]="users | filterSkill: filter"></app-grid-users>
+<div class="bg">
+  <app-search-skill [value]="filter" (sendFilter)="filter = $event"></app-search-skill>
+  <app-grid-users [users]="users | filterSkill: filter"></app-grid-users>
+</div>

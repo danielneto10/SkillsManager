@@ -1,11 +1,5 @@
 import { Injectable } from '@angular/core';
-import {
-  ActivatedRouteSnapshot,
-  CanActivateChild,
-  Router,
-  RouterStateSnapshot,
-  UrlTree,
-} from '@angular/router';
+import { CanLoad, Route, Router, UrlSegment, UrlTree } from '@angular/router';
 import { Observable } from 'rxjs';
 import { AuthUser } from '../autenticacao/user/auth-user';
 import { AuthUserService } from '../autenticacao/user/auth-user.service';
@@ -13,7 +7,7 @@ import { AuthUserService } from '../autenticacao/user/auth-user.service';
 @Injectable({
   providedIn: 'root',
 })
-export class IsOwnerGuard implements CanActivateChild {
+export class AdminRoleGuard implements CanLoad {
   user: AuthUser = {};
 
   constructor(
@@ -25,18 +19,16 @@ export class IsOwnerGuard implements CanActivateChild {
       .subscribe((authUser) => (this.user = authUser));
   }
 
-  canActivateChild(
-    childRoute: ActivatedRouteSnapshot,
-    state: RouterStateSnapshot
+  canLoad(
+    route: Route,
+    segments: UrlSegment[]
   ):
     | Observable<boolean | UrlTree>
     | Promise<boolean | UrlTree>
     | boolean
     | UrlTree {
-    const userNameRoute = childRoute.parent?.parent?.params.userName;
-
-    if (this.user === null || userNameRoute !== this.user.userName) {
-      this.router.navigate(['/users']);
+    if (this.user === null || !this.user.admin) {
+      this.router.navigate(['']);
       return false;
     }
     return true;

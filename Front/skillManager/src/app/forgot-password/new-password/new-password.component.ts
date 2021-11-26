@@ -51,7 +51,7 @@ export class NewPasswordComponent implements OnInit {
           this.router.navigate(['/home', 'login']);
         },
         () => {
-          this.toastr.error('Token inválido', 'Error');
+          this.toastr.error('Token/Email inválido', 'Error');
         }
       );
   }
