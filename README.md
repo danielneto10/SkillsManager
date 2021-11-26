@@ -46,3 +46,20 @@ export const environment = {
   apiURL: 'http://localhost:3000', //Alterar caso necessário
 };
 ```
+
+## Iniciar
+
+### API
+
+Esteja dentro da pasta 'API/SkillsManager' digite o comando para iniciar a api:
+```bash
+npm run dev
+```
+
+### Front
+
+Esteja dentro da pasta 'Front/skillManager' digite o comando para iniciar o front:
+```bash
+ng serve --open
+```
+**O '--open' fará o site abrir assim que ele for inicializado**
