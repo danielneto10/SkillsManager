@@ -22,7 +22,7 @@ export default {
   /* Resto do código */
 };
 ```
-**Observação:** Não esquece de criar o banco em seu banco de dados
+**Observação:** Não esquece de criar o banco em seu banco de dados com o mesmo nome colocado em 'database'
 
 ### 2. Front
 
