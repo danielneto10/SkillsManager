@@ -1,7 +1,7 @@
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
+
 import { AdminRoleGuard } from './core/guards/admin-role.guard';
-import { LoggedGuard } from './core/guards/logged.guard';
 import { NotFoundComponent } from './errors/not-found/not-found.component';
 
 const routes: Routes = [
