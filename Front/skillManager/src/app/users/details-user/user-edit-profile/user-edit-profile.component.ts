@@ -70,8 +70,11 @@ export class UserEditProfileComponent implements OnInit {
       .subscribe(
         () => {
           this.toastr.success('Usuário salvo com sucesso', 'Usuário salvo');
-          this.router.navigate(['/users', this.user.userName]).then(() => {
-            window.location.reload();
+          // this.router.navigate(['/users', this.user.userName]).then(() => {
+          //   window.location.reload();
+          // });
+          this.router.navigate(['../../'], {
+            relativeTo: this.activatedRoute,
           });
         },
         () => {

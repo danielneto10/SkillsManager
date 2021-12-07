@@ -9,6 +9,7 @@ export interface User {
   perfilPhoto?: string;
   skills: Skills;
   socialMedias: SocialMedias;
+  admin?: boolean;
 }
 
 export type Users = Array<User>;

@@ -1,6 +1,8 @@
 import { Component, OnInit } from '@angular/core';
-import { ActivatedRoute, Router, RouterEvent } from '@angular/router';
+import { ActivatedRoute, Router } from '@angular/router';
 import { NgxSpinnerService } from 'ngx-spinner';
+import { Subscription } from 'rxjs';
+
 import { Users } from '../models/user';
 
 @Component({
@@ -11,11 +13,9 @@ import { Users } from '../models/user';
 export class ListaUsersComponent implements OnInit {
   users!: Users;
   filter = '';
+  loadResolver!: Subscription;
 
-  constructor(
-    private activatedRoute: ActivatedRoute,
-    private spinner: NgxSpinnerService
-  ) {}
+  constructor(private activatedRoute: ActivatedRoute) {}
 
   ngOnInit(): void {
     this.activatedRoute.params.subscribe(() => {

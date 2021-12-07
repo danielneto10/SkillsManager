@@ -16,6 +16,7 @@ export class AdminSkillsComponent implements OnInit {
   skills: Skills = [];
   skillForm!: FormGroup;
   skillId!: number;
+  editSkillForm!: FormGroup;
 
   modalRef?: BsModalRef;
   config = {
@@ -32,6 +33,11 @@ export class AdminSkillsComponent implements OnInit {
 
   ngOnInit(): void {
     this.skillForm = this.fb.group({
+      name: ['', [Validators.required]],
+      descr: ['', [Validators.required]],
+    });
+
+    this.editSkillForm = this.fb.group({
       name: ['', [Validators.required]],
       descr: ['', [Validators.required]],
     });
@@ -67,10 +73,20 @@ export class AdminSkillsComponent implements OnInit {
     );
   }
 
-  openModal(template: TemplateRef<any>, id?: number) {
+  openModal(
+    template: TemplateRef<any>,
+    id?: number,
+    editName?: string,
+    editDescr?: string
+  ) {
     if (id) {
       this.skillId = id;
     }
+    if (editName && editDescr) {
+      this.editSkillForm.controls.name?.setValue(editName);
+      this.editSkillForm.controls.descr?.setValue(editDescr);
+    }
+    this.skillForm.reset();
     this.modalRef = this.modalService.show(template, this.config);
   }
 
@@ -80,6 +96,16 @@ export class AdminSkillsComponent implements OnInit {
   }
 
   no() {
+    this.modalRef?.hide();
+  }
+
+  editSkill() {
+    const skill = this.editSkillForm.getRawValue() as Skill;
+    console.log(skill);
+    this.adminSkillService.editSkill(skill, this.skillId).subscribe(() => {
+      this.toastr.success('Skill editada com sucesso', 'Skill editada');
+      this.carregarSkills();
+    });
     this.modalRef?.hide();
   }
 }

@@ -1,4 +1,10 @@
-<div class="bg">
+<div class="bg" *ngIf="users; else usersNull">
   <app-search-skill [value]="filter" (sendFilter)="filter = $event"></app-search-skill>
   <app-grid-users [users]="users | filterSkill: filter"></app-grid-users>
 </div>
+
+<ng-template #usersNull>
+  <div>
+    <p class="text-muted">Sem nada</p>
+  </div>
+</ng-template>

@@ -18,4 +18,8 @@ export class AdminSkillsService {
   excluirSkill(skillId: number) {
     return this.http.delete(`${URL}/skills/${skillId}`);
   }
+
+  editSkill(skill: Skill, skillId: number) {
+    return this.http.put(`${URL}/skills/${skillId}`, skill);
+  }
 }

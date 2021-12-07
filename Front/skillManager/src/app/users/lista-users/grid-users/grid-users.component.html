@@ -1,9 +1,12 @@
-<div class="container d-flex flex-column">
-  <div class="row g-0">
+<div class="container d-flex flex-column lista">
+  <div class="row g-0 h-50">
     <div class="col-md-4 p-3" *ngFor="let user of users">
-      <app-user-card [user]=user></app-user-card>
+      <app-user-card *ngIf="!user.admin" [user]=user></app-user-card>
     </div>
   </div>
   <div class="d-flex flex-column align-items-center mt-auto fixed-bottom">
   </div>
 </div>
+<!-- <div class="d-flex justify-content-center">
+  <pagination [totalItems]="users.length" [itemsPerPage]="6" (pageChanged)="pageChanged($event)"></pagination>
+</div> -->

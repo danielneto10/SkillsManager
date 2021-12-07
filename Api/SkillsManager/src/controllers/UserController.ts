@@ -7,7 +7,6 @@ class UserController {
     try {
       const userRepository = getRepository(User);
       const users = await userRepository.find({
-        where: { admin: false },
         relations: ['socialMedias', 'skills'],
       });
 
@@ -55,29 +54,27 @@ class UserController {
     try {
       const userRepository = getRepository(User);
       const user = await userRepository.findOne({
-        where: { userName: userName, admin: false },
+        where: { userName: userName },
       });
       if (!user) return res.status(200).json();
-      if (req.body.admin) req.body.admin = false;
+      // if (userFields.email || user.userName) {
+      //   const uEmail = userFields.email ?? '';
+      //   const uUserName = userFields.userName ?? '';
 
-      if (userFields.email || user.userName) {
-        const uEmail = userFields.email ?? '';
-        const uUserName = userFields.userName ?? '';
-
-        const userEmail = await userRepository.findOne({
-          where: { email: uEmail },
-        });
-        const userUserName = await userRepository.findOne({
-          where: { userName: uUserName },
-        });
-        if (userEmail || userUserName) {
-          return res
-            .status(400)
-            .json({ message: 'Este usuario/email já está cadastrado' });
-        }
-        await userRepository.update(userName, req.body);
-        return res.status(200).json();
-      }
+      //   const userEmail = await userRepository.findOne({
+      //     where: { email: uEmail },
+      //   });
+      //   const userUserName = await userRepository.findOne({
+      //     where: { userName: uUserName },
+      //   });
+      //   if (userEmail || userUserName) {
+      //     return res
+      //       .status(400)
+      //       .json({ message: 'Este usuario/email já está cadastrado' });
+      //   }
+      // }
+      await userRepository.update(userName, req.body);
+      return res.status(200).json();
     } catch {
       return res.sendStatus(500);
     }

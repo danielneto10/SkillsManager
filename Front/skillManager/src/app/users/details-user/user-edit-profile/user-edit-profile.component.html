@@ -1,4 +1,4 @@
-<div class="mx-5">
+<div class="mx-5 h-100 d-flex flex-column">
   <div>
     <h1>Sobre</h1>
     <hr>
@@ -9,7 +9,7 @@
       maxlength="600"></textarea>
   </form>
   <div>
-    <h1>Mídias Sociais</h1>
+    <h2>Mídias Sociais</h2>
   </div>
   <form [formGroup]="socialMediaForm">
     <div class="input-group mb-3">
@@ -18,7 +18,7 @@
     </div>
   </form>
   <div class="overflow-auto tabela">
-    <table class="table table-striped table-light">
+    <table class="table table-striped table-light mb-0">
       <thead>
         <tr>
           <th scope="col">Links</th>
@@ -34,7 +34,7 @@
         </tr>
     </table>
   </div>
-  <div class="d-grid">
+  <div class="d-grid mt-auto">
     <button class="botao btn my-3 text-light fw-bold" (click)="salvar()">Salvar</button>
   </div>
 </div>

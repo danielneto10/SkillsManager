@@ -9,7 +9,7 @@ import { Log } from '../entities/Log';
 
 class AuthController {
   async register(req: Request, res: Response) {
-    const { userName, name, email, password } = req.body;
+    const { userName, name, email, password, admin } = req.body;
     try {
       const userRepository = getRepository(User);
       const userExists = await userRepository.findOne({
@@ -26,6 +26,7 @@ class AuthController {
         email: email,
         password: password,
       });
+      if (admin) user.admin = admin;
       user.userName = user.userName.toLowerCase();
       const errors = await validate(user, {
         validationError: { target: false },
