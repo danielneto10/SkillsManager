@@ -3,6 +3,7 @@ import { FlatList } from "react-native";
 
 import BaseScreen from "../../components/BaseScreen";
 import UserCard from "../../components/UserCard";
+import { Skill } from "../../models/Skill";
 import { User } from "../../models/User";
 
 const users: Array<User> = [
@@ -11,10 +12,14 @@ const users: Array<User> = [
     name: "Daniel",
     skills: [
       {
+        id: 1,
         name: "C#",
+        descr: "Back-end",
       },
       {
+        id: 2,
         name: "Java",
+        descr: "Back-end",
       },
     ],
   },
@@ -23,7 +28,9 @@ const users: Array<User> = [
     name: "Rafael",
     skills: [
       {
+        id: 1,
         name: "C#",
+        descr: "Back-end",
       },
     ],
   },
@@ -32,7 +39,9 @@ const users: Array<User> = [
     name: "João",
     skills: [
       {
+        id: 1,
         name: "C#",
+        descr: "Back-end",
       },
     ],
   },
@@ -41,7 +50,9 @@ const users: Array<User> = [
     name: "Maria",
     skills: [
       {
+        id: 1,
         name: "C#",
+        descr: "Back-end",
       },
     ],
   },
@@ -50,7 +61,9 @@ const users: Array<User> = [
     name: "Eduardo",
     skills: [
       {
+        id: 1,
         name: "C#",
+        descr: "Back-end",
       },
     ],
   },
@@ -59,7 +72,9 @@ const users: Array<User> = [
     name: "Bruno",
     skills: [
       {
+        id: 1,
         name: "C#",
+        descr: "Back-end",
       },
     ],
   },
@@ -68,7 +83,9 @@ const users: Array<User> = [
     name: "Bruna",
     skills: [
       {
+        id: 1,
         name: "C#",
+        descr: "Back-end",
       },
     ],
   },
@@ -82,7 +99,7 @@ export default function Home() {
         renderItem={({ item }) => {
           return <UserCard {...item} />;
         }}
-        keyExtractor={(item) => item.id}
+        keyExtractor={(item) => item.id?.toString()}
       />
     </BaseScreen>
   );

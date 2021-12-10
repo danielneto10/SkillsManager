@@ -21,6 +21,7 @@ const routes: Routes = [
   },
   {
     path: ':userName',
+    runGuardsAndResolvers: 'always',
     component: DetailsUserComponent,
     resolve: {
       user: DetailsUserResolver,

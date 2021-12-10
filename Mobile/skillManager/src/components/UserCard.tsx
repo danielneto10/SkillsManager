@@ -1,9 +1,12 @@
+import { useNavigation } from "@react-navigation/native";
 import React from "react";
 import { FlatList, View } from "react-native";
 import { Badge, Button, Card, Title } from "react-native-paper";
 import { User } from "../models/User";
 
 export default function UserCard({ name, skills }: User) {
+  const nav = useNavigation();
+
   return (
     <Card style={{ marginVertical: 16 }}>
       <Card.Title title={name} />
@@ -22,6 +25,7 @@ export default function UserCard({ name, skills }: User) {
               </Badge>
             );
           }}
+          keyExtractor={(item) => item.id.toString()}
         />
       </Card.Content>
       <Card.Actions>
@@ -29,7 +33,12 @@ export default function UserCard({ name, skills }: User) {
           mode="contained"
           style={{ width: "100%" }}
           color="#0C52B3"
-          onPress={() => {}}
+          onPress={() => {
+            nav.navigate(
+              "Profile" as never,
+              { name: name, skills: skills } as never
+            );
+          }}
         >
           Ver Perfil
         </Button>

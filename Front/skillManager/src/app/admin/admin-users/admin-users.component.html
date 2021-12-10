@@ -1,8 +1,10 @@
 <div class="container d-flex flex-column align-items-center justify-content-center">
-  <div class="d-flex justify-content-center w-100 text-light rounded titulo">
+  <a [routerLink]="['../']" class="btn btn-return align-self-start text-light"><i
+      class="fas fa-arrow-left me-2"></i>Voltar</a>
+  <div class="d-flex justify-content-center w-100 text-light rounded titulo mt-3">
     <h1>Usuários</h1>
   </div>
-  <div class="w-100">
+  <div class="w-100 table-responsive-sm">
     <table *ngIf="users.length" class="table table-striped w-100">
       <thead>
         <tr>
@@ -33,10 +35,10 @@
         <td></td>
       </tfoot>
     </table>
-    <div class="d-flex justify-content-center">
-      <button class="btn btn-danger bg-success border-success w-75" (click)="openModal(createUserForm)"><i
-          class="fas fa-plus"></i></button>
-    </div>
+  </div>
+  <div class="d-flex justify-content-center w-100">
+    <button class="btn btn-danger bg-success border-success w-75" (click)="openModal(createUserForm)"><i
+        class="fas fa-plus"></i></button>
   </div>
 </div>
 
@@ -50,19 +52,37 @@
     <form [formGroup]="userForm">
       <div class="mb-3">
         <label for="nameInput" class="form-label">Nome</label>
-        <input formControlName="name" type="text" class="form-control" id="nameInput">
+        <input formControlName="name" type="text" class="form-control" id="nameInput"
+          [ngClass]="cssValidator(userForm.controls.name)">
+        <div class="invalid-feedback"
+          *ngIf="userForm.controls.name?.errors?.required && userForm.controls.name?.touched">Nome é obrigatório
+        </div>
       </div>
       <div class="mb-3">
         <label for="userNameInput" class="form-label">UserName</label>
-        <input formControlName="userName" type="text" class="form-control" id="userNameInput">
+        <input formControlName="userName" type="text" class="form-control" id="userNameInput"
+          [ngClass]="cssValidator(userForm.controls.userName)">
+        <div class="invalid-feedback"
+          *ngIf="userForm.controls.userName?.errors?.required && userForm.controls.userName?.touched">UserName é
+          obrigatório</div>
       </div>
       <div class="mb-3">
         <label for="emailInput" class="form-label">Email</label>
-        <input formControlName="email" type="text" class="form-control" id="emailInput">
+        <input formControlName="email" type="text" class="form-control" id="emailInput"
+          [ngClass]="cssValidator(userForm.controls.email)">
+        <div class="invalid-feedback"
+          *ngIf="userForm.controls.email?.errors?.required && userForm.controls.email?.touched">Email é
+          obrigatório</div>
+        <div class="invalid-feedback"
+          *ngIf="userForm.controls.email?.errors?.email && userForm.controls.email?.touched">Email deve se válido</div>
       </div>
       <div class="mb-3">
         <label for="passwordInput" class="form-label">Password</label>
-        <input formControlName="password" type="password" class="form-control" id="passwordInput">
+        <input formControlName="password" type="password" class="form-control" id="passwordInput"
+          [ngClass]="cssValidator(userForm.controls.password)">
+        <div class="invalid-feedback"
+          *ngIf="userForm.controls.password?.errors?.required && userForm.controls.password?.touched">Senha é
+          obrigatório</div>
       </div>
       <div class="form-check mb-3">
         <input formControlName="admin" type="checkbox" class="form-check-input" id="adminCheck">
@@ -93,11 +113,22 @@
     <form [formGroup]="editUserForm">
       <div class="mb-3">
         <label for="nameInput" class="form-label">Nome</label>
-        <input formControlName="name" type="text" class="form-control" id="nameInput">
+        <input formControlName="name" type="text" class="form-control" id="nameInput"
+          [ngClass]="cssValidator(editUserForm.controls.name)">
+        <div class="invalid-feedback"
+          *ngIf="editUserForm.controls.name?.errors?.required && editUserForm.controls.name?.touched">Nome é
+          obrigatório</div>
       </div>
       <div class="mb-3">
         <label for="emailInput" class="form-label">Email</label>
-        <input formControlName="email" type="text" class="form-control" id="emailInput">
+        <input formControlName="email" type="text" class="form-control" id="emailInput"
+          [ngClass]="cssValidator(editUserForm.controls.email)">
+        <div class="invalid-feedback"
+          *ngIf="editUserForm.controls.email?.errors?.required && editUserForm.controls.email?.touched">Email é
+          obrigatório</div>
+        <div class="invalid-feedback"
+          *ngIf="editUserForm.controls.email?.errors?.email && editUserForm.controls.email?.touched">Email deve se
+          válido</div>
       </div>
       <div class="form-check mb-3">
         <input formControlName="admin" type="checkbox" class="form-check-input" id="adminCheck">

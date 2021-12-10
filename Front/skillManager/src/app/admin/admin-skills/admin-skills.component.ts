@@ -5,6 +5,7 @@ import { ToastrService } from 'ngx-toastr';
 import { switchMap } from 'rxjs/operators';
 import { SkillsService } from 'src/app/users/details-user/user-edit-skills/skills.service';
 import { Skill, Skills } from 'src/app/users/models/skill';
+import { cssValidator } from 'src/app/utils/cssValidator';
 import { AdminSkillsService } from './admin-skills.service';
 
 @Component({
@@ -17,6 +18,8 @@ export class AdminSkillsComponent implements OnInit {
   skillForm!: FormGroup;
   skillId!: number;
   editSkillForm!: FormGroup;
+
+  cssValidator = cssValidator;
 
   modalRef?: BsModalRef;
   config = {

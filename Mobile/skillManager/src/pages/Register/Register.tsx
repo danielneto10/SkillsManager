@@ -16,11 +16,7 @@ export default function Register() {
         style={{ flexDirection: "row", alignItems: "center", marginTop: 16 }}
       >
         <Text style={styles.texto}>Já possui uma conta?</Text>
-        <Button
-          mode="text"
-          color="#0C52B3"
-          onPress={() => nav.navigate("Login" as never)}
-        >
+        <Button mode="text" color="#0C52B3" onPress={() => nav.goBack()}>
           Faça o login
         </Button>
       </View>

@@ -1,5 +1,7 @@
 <div class="container d-flex flex-column align-items-center justify-content-center">
-  <div class=" d-flex justify-content-center w-100 text-light rounded titulo">
+  <a [routerLink]="['../']" class="btn btn-return align-self-start text-light"><i
+      class="fas fa-arrow-left me-2"></i>Voltar</a>
+  <div class=" d-flex justify-content-center w-100 text-light rounded titulo mt-3">
     <h1>Skills</h1>
   </div>
   <div class="w-100">
@@ -48,18 +50,25 @@
     <form [formGroup]="skillForm">
       <div class="mb-3">
         <label for="nameInput" class="form-label">Nome</label>
-        <input formControlName="name" type="text" class="form-control" id="nameInput">
+        <input formControlName="name" type="text" class="form-control" id="nameInput"
+          [ngClass]="cssValidator(skillForm.controls.name)">
+        <div class="invalid-feedback"
+          *ngIf="skillForm.controls.name?.errors?.required && skillForm.controls.name?.touched">Nome é
+          obrigatório</div>
       </div>
       <div class="mb-3">
         <label class="form-label">Descrição</label>
-        <select formControlName="descr" class="form-select">
+        <select formControlName="descr" class="form-select" [ngClass]="cssValidator(skillForm.controls.descr)">
           <option value="Back-end">Back-end</option>
           <option value="Front-end">Front-end</option>
           <option value="Outro">Outro</option>
         </select>
+        <div class="invalid-feedback"
+          *ngIf="skillForm.controls.descr?.errors?.required && skillForm.controls.descr?.touched">Descrição é
+          obrigatório</div>
       </div>
       <div class="d-grid">
-        <button class="btn btn-primary" (click)="addSkill()">Adicionar</button>
+        <button class="btn btn-primary" [disabled]="!skillForm.valid" (click)="addSkill()">Adicionar</button>
       </div>
     </form>
   </div>
@@ -83,18 +92,25 @@
     <form [formGroup]="editSkillForm">
       <div class="mb-3">
         <label for="nameInput" class="form-label">Nome</label>
-        <input formControlName="name" type="text" class="form-control" id="nameInput">
+        <input formControlName="name" type="text" class="form-control" id="nameInput"
+          [ngClass]="cssValidator(editSkillForm.controls.name)">
+        <div class="invalid-feedback"
+          *ngIf="editSkillForm.controls.name?.errors?.required && editSkillForm.controls.name?.touched">Nome é
+          obrigatório</div>
       </div>
       <div class="mb-3">
         <label class="form-label">Descrição</label>
-        <select formControlName="descr" class="form-select">
+        <select formControlName="descr" class="form-select" [ngClass]="cssValidator(editSkillForm.controls.descr)">
           <option value="Back-end">Back-end</option>
           <option value="Front-end">Front-end</option>
           <option value="Outro">Outro</option>
         </select>
+        <div class="invalid-feedback"
+          *ngIf="editSkillForm.controls.descr?.errors?.required && editSkillForm.controls.descr?.touched">Descrição é
+          obrigatório</div>
       </div>
       <div class="d-grid">
-        <button class="btn btn-primary" (click)="editSkill()">Salvar</button>
+        <button class="btn btn-primary" [disabled]="!editSkillForm.valid" (click)="editSkill()">Salvar</button>
       </div>
     </form>
   </div>

@@ -4,6 +4,7 @@ import { BsModalRef, BsModalService } from 'ngx-bootstrap/modal';
 import { ToastrService } from 'ngx-toastr';
 import { ListaUsersService } from 'src/app/users/lista-users/lista-users.service';
 import { User, Users } from 'src/app/users/models/user';
+import { cssValidator } from 'src/app/utils/cssValidator';
 import { AdminUsersService } from './admin-users.service';
 
 @Component({
@@ -17,6 +18,8 @@ export class AdminUsersComponent implements OnInit {
   userForm: FormGroup;
   editUserForm: FormGroup;
   userName: string = '';
+
+  cssValidator = cssValidator;
 
   modalRef?: BsModalRef;
   config = {
@@ -33,14 +36,14 @@ export class AdminUsersComponent implements OnInit {
     this.userForm = fb.group({
       userName: ['', [Validators.required]],
       name: ['', [Validators.required]],
-      email: ['', [Validators.required]],
+      email: ['', [Validators.required, Validators.email]],
       password: ['', [Validators.required]],
       admin: [false],
     });
 
     this.editUserForm = fb.group({
       name: ['', [Validators.required]],
-      email: ['', [Validators.required]],
+      email: ['', [Validators.required, Validators.email]],
       admin: [false],
     });
   }
